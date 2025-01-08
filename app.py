@@ -1,11 +1,16 @@
 import streamlit as st
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import CTransformers
+from huggingface_hub import login
+
+to1 = "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"
+
+login(to1)
 
 def getLLamaresponse(input_text,no_words,blog_style):
 
     ### LLama2 model
-    llm=CTransformers(model='model/llama-2-7b-chat.ggmlv3.q8_0.bin',
+    llm=CTransformers(model='model/llama-2-7b-chat.ggmlv3.q2_K.bin',
                       model_type='llama',
                       config={'max_new_tokens':300,
                               'temperature':0.5})
@@ -26,7 +31,9 @@ st.set_page_config(page_title="Blog Generation Using LLama 2",
                    layout='centered',
                    initial_sidebar_state='collapsed')
 
-st.header("Generate Blogs 🤖")
+st.header("Blog Generation App :earth_americas:")
+
+st.write('Although the app uses quantized version of llama-2, it might take some time to generate the respone!')
 
 input_text=st.text_input("Enter the Blog Topic")
 

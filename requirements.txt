@@ -1,3 +1,7 @@
 langchain
 streamlit
 ctransformers
+sentence-transformers
+uvicorn
+langchain_community
+transformers
